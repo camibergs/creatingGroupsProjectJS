@@ -1,0 +1,39 @@
+nav {
+  padding: 5px;
+  background: rgb(31, 36, 41);
+  display: flex;
+  gap: 10px;
+
+  div.navItem a {
+    color: White;
+    text-decoration: none;
+    padding: 10px;
+
+    &:hover {
+      color: #5464a0;
+    }
+  }
+
+  div.navItemWelcome { 
+    margin-left: auto; 
+    padding-left: 600px;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+
+  }
+
+  .logOut {
+    margin-left: auto; 
+    padding-right: 10px;
+
+    a {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+
+      &:hover {
+          color: #5464a0;
+      }
+
+    }
+  }
+}
