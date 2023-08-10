@@ -10,17 +10,17 @@ import LecturerView from "./components/views/LecturerView.js";
 import "./index.js";
 
 function App() {
-  const loggedInUser = "";
+  const loggedInUser = "test";
 
   return (
     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/groupassessments" element={<GroupAssessments />} />
-          <Route path="/coursemates" element={<Students />} />
-          <Route path="/favstudents" element={<FavStudents />} />
-          <Route path="/lecturerview" element={<LecturerView />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/groupassessments" element={<GroupAssessments />} />
+        <Route path="/coursemates" element={<Students />} />
+        <Route path="/favstudents" element={<FavStudents />} />
+        <Route path="/lecturerview" element={<LecturerView />} />
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -35,7 +35,7 @@ export default function GroupAssessments(props) {
       ) : (
         <View>
           <Header />
-          <Navbar /> 
+          <Navbar />
           <h1>Group Assessments</h1>
 
           <CardContainer>
