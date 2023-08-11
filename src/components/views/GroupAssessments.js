@@ -11,8 +11,10 @@ export default function GroupAssessments(props) {
   // Initialisation ------------------------------
   const url = `http://softwarehub.uk/unibase/api/assessments/leader/820`;
   const navigate = useNavigate();
+
   // State ---------------------------------------
   const [groupAssessments, setGroupAssessments] = useState(null);
+  
   const get = async () => {
       try {
         const response = await fetch(url);
@@ -32,7 +34,6 @@ export default function GroupAssessments(props) {
 
   // Handlers ------------------------------------
   const handleButtonClick = () => {
-    // Replace "path-to-redirect" with the actual path you want to navigate to
     navigate("/propose");
   };
 
