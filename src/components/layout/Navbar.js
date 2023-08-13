@@ -4,7 +4,7 @@ import "./Navbar.scss";
 
 function Navbar() {
   const location = useLocation();
-  const loggedInUser = location.state?.loggedInUser;
+  const loggedInUser = location.state?.loggedInUser ?? `unknown`;
 
   // Trim down the email to remove the domain
   const trimmedUser = loggedInUser?.split("@")[0];

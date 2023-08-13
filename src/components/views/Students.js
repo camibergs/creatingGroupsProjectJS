@@ -11,11 +11,33 @@ import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 
 const Students = () => {
-  const [theStudents, setStudents] = useState([]);
-  const [filteredStudents, setFilteredStudents] = useState([]);
+  // Initialisation ------------------------------
   const url = `http://softwarehub.uk/unibase/api/users/likes/277`;
   //const url = `http://10.130.41.146:5000/api/users/likes/277`;
 
+  // State ---------------------------------------
+  const [theStudents, setStudents] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+
+  const getStudents = async () => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Failed to fetch students data.");
+      }
+      const data = await response.json();
+      setStudents(data);
+      setFilteredStudents(data); // Initialize filtered students with all students
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getStudents();
+  }, []);
+
+  // Handlers ------------------------------------
   const searchbar = (search) => {
     if (search === "") {
       setFilteredStudents(theStudents);
@@ -46,24 +68,8 @@ const Students = () => {
     }
   };
 
-  const getStudents = async () => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Failed to fetch students data.");
-      }
-      const data = await response.json();
-      setStudents(data);
-      setFilteredStudents(data); // Initialize filtered students with all students
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  useEffect(() => {
-    getStudents();
-  }, []);
-
+  
+  // View ----------------------------------------
   return (
     <View>
       <Header /> 
