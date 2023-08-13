@@ -1,4 +1,3 @@
-
 // THE DRAGGABLE REUSABLE COMPONENT //////////////
 export function Draggable(props) {
   // Initialisation ------------------------------
@@ -17,18 +16,17 @@ export function Draggable(props) {
       id={props.id}
       draggable="true"
       onDragStart={handleDrag}
-      className={(('className' in props) && props.className)}
+      className={"className" in props && props.className}
     >
       {props.children}
     </div>
   );
-  }
-
+}
 
 // THE DROPPABLE REUSABLE COMPONENT //////////////
 export function Droppable(props) {
   // Initialisation ------------------------------
-  
+
   // State ---------------------------------------
 
   // Handlers ------------------------------------
@@ -40,14 +38,14 @@ export function Droppable(props) {
   };
 
   const allowDrop = (event) => event.preventDefault();
-    
+
   // View ----------------------------------------
   return (
     <div
       id={props.id}
       onDrop={handleDrop}
       onDragOver={allowDrop}
-      className={(('className' in props) && props.className)}
+      className={"className" in props && props.className}
     >
       {props.children}
     </div>
