@@ -144,7 +144,7 @@ export default function FavCard({ student, children, index, get }) {
   if (student.UserLikeAffinityID === 1)
     buttons = (
       <Action.Tray>
-        {buttonPutDislike}
+        {buttonPutLike}
         {buttonReset}
       </Action.Tray>
       
@@ -152,7 +152,7 @@ export default function FavCard({ student, children, index, get }) {
   else if (student.UserLikeAffinityID === 2)
     buttons = (
       <Action.Tray>
-        {buttonPutLike}
+        {buttonPutDislike}
         {buttonReset}
       </Action.Tray>
     );
