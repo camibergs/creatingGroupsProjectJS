@@ -1,0 +1,20 @@
+button.iconedbutton {
+    display: flex;
+    background-color: red;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    
+
+    div {
+       width: 20px; 
+       color: white;
+
+       div {
+        img {
+            filter: invert(100%);
+        }
+       }
+    }
+
+}

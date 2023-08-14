@@ -5,6 +5,12 @@
   justify-content: center;
   border-radius: 3px;
 
+    margin: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    background: rgba(216, 216, 216, 0.3);
+ 
+
   .img {
     width: 100%;
     display: block;
@@ -22,45 +28,69 @@
     text-align: center;
     margin: 20px;
     box-shadow: 4px 4px 8px 4px rgba(70, 70, 70, 0.3);
-  
+    background-color: white;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 
     button {
       margin: 5px;
       margin-top: 10px;
       padding: 6px 8px;
-      width: 88px;
+      width: 94px;
       border-radius: 4px;
       border: none;
+      border: 0px solid grey;
       cursor: pointer;
-  
-      background: rgb(164, 170, 187);
+      color: white;
+    
+      background: rgb(80, 98, 172);
       box-shadow: 1px 1px 2px 1px rgba(70,70,70,0.3);
 
       &:hover {
-       background-color: #5464a0;
+       background-color: #444754;
+      }
+
     }
+
+    .camilla {
+      color: red;
     }
+
+
   }
 
   /* CSS classes to define background colors */
 
   .red-border {
-    border-color: rgb(185, 31, 31);
-    border-width: 7px;
+
+    border-color: rgb(193, 68, 95);
+    border-width: 2px;
+    background-color: white;
+    
+    button {
+      background: rgb(193, 68, 95);
+      box-shadow: 1px 1px 2px 1px rgba(70,70,70,0.3);
+    }
   }
 
   .green-border {
     border-color: rgb(11, 115, 11);
-    border-width: 7px;
+    border-width: 2px;
+    background-color: white;
+
+    button {
+      background: rgb(59, 152, 78);
+      box-shadow: 1px 1px 2px 1px rgba(70,70,70,0.3);
+    }
   }
 
   .grey-border {
-    border-color: rgb(67, 72, 76);
-    border-width: 7px;
+    border-color: rgb(101, 124, 143);
+    border-width: 0.5px;
   }
 
   .Searchbar {

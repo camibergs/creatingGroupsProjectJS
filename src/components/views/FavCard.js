@@ -1,3 +1,6 @@
+import Action from '../UI/Actions.js';
+import Icon from '../UI/Icons.js';
+import "./FavCard.scss";
 
 export default function FavCard({ student, children, index, get }) {
   // initialisation ----------------------------
@@ -98,42 +101,67 @@ export default function FavCard({ student, children, index, get }) {
 
   // View --------------------------------------
   const buttonPostLike = (
-    <button onClick={() => handlePostLike(student)}>Like</button>
+    <button className="iconedbutton" onClick={() => handlePostLike(student)}>
+      <div>
+        <Icon.ThumbUp />
+      </div>
+    </button>
   );
+  //<Action.Like showText buttonText="Like" onClick={() => handlePostLike(student)} />
+  //<button onClick={() => handlePostLike(student)}>Like</button>
+
   const buttonPutLike = (
-    <button onClick={() => handlePutLike(student)}>Like</button>
+    <button className="iconedbutton" onClick={() => handlePutLike(student)}>
+      <div>
+        <Icon.ThumbUp />
+      </div>
+    </button>
   );
   const buttonPostDislike = (
-    <button onClick={() => handlePostDislike(student)}>DisLike</button>
+    <button className="iconedbutton" onClick={() => handlePostDislike(student)}>
+      <div>
+        <Icon.ThumbDown />
+      </div>
+    </button>
   );
   const buttonPutDislike = (
-    <button onClick={() => handlePutDislike(student)}>DisLike</button>
+    <button className="iconedbutton" onClick={() => handlePutDislike(student)}>
+      <div>
+        <Icon.ThumbDown />
+      </div>
+    </button>
   );
   const buttonReset = (
-    <button onClick={() => handleReset(student)}>Reset</button>
+    <button className="iconedbutton" onClick={() => handleReset(student)}>
+      <div>
+        <Icon.Reset />
+      </div>
+    </button>
+
   );
 
   let buttons = null;
   if (student.UserLikeAffinityID === 1)
     buttons = (
-      <>
+      <Action.Tray>
         {buttonPutDislike}
         {buttonReset}
-      </>
+      </Action.Tray>
+      
     );
   else if (student.UserLikeAffinityID === 2)
     buttons = (
-      <>
+      <Action.Tray>
         {buttonPutLike}
         {buttonReset}
-      </>
+      </Action.Tray>
     );
   else if (student.UserLikeAffinityID === null)
     buttons = (
-      <>
+      <Action.Tray>
         {buttonPostLike}
         {buttonPostDislike}
-      </>
+      </Action.Tray>
     );
   else;
 

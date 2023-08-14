@@ -92,6 +92,32 @@ function RedHeart() {
   );
 }
 
+function Reset() {
+  return (
+    <Icon className="IconReset">
+      <img src="https://img.icons8.com/metro/26/recurring-appointment.png" alt="recurring-appointment" alt="Reset icon" />
+    </Icon>
+  );
+}
+
+
+function ThumbUp() {
+  return (
+    <Icon className="IconThumbUp">
+      <img src="https://img.icons8.com/material-rounded/48/thumb-up.png" alt="Thumb up icon" />
+    </Icon>
+  );
+}
+
+function ThumbDown() {
+  return (
+    <Icon className="IconThumbDown">
+      <img src="https://img.icons8.com/material-rounded/48/thumbs-down.png" alt="Thumb down icon" />
+    </Icon>
+  );
+}
+
+
 function Tick() {
   return (
     <Icon className="IconTick">
@@ -131,6 +157,9 @@ Icon.Pen = Pen;
 Icon.Plus = Plus;
 Icon.RedCross = RedCross;
 Icon.RedHeart = RedHeart;
+Icon.Reset = Reset;
+Icon.ThumbUp = ThumbUp;
+Icon.ThumbDown = ThumbDown;
 Icon.Tick = Tick;
 Icon.Trash = Trash;
 Icon.Acknowledge = Acknowledge;

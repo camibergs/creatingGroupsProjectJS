@@ -123,6 +123,18 @@ export function Favourites({ onClick, showText = false, buttonText = 'List favou
   );
 }
 
+Like.propTypes = ActionPropTypes;
+
+export function Like({ onClick, showText = false, buttonText = 'Like' }) {
+  return (
+    <Action buttonText={buttonText} onClick={onClick} showText={showText}>
+      <Icon.ThumbUp />
+    </Action>
+  );
+}
+
+
+
 ListAll.propTypes = ActionPropTypes;
 
 export function ListAll({ onClick, showText = false, buttonText = 'List all' }) {
@@ -207,6 +219,7 @@ Action.Delete = Delete;
 Action.Dismiss = Dismiss;
 Action.Expand = Expand;
 Action.Favourites = Favourites;
+Action.Like = Like;
 Action.ListAll = ListAll;
 Action.Modify = Modify;
 Action.No = No;
