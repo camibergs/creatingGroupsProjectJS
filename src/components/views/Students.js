@@ -9,11 +9,11 @@ import ColourIndicator from "./ColourIndicator.js";
 import FilterButtons from "./FilterButton.js";
 import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
+import apiURL from "../../api/API_URL.js";
 
 const Students = () => {
   // Initialisation ------------------------------
-  const url = `http://softwarehub.uk/unibase/api/users/likes/277`;
-  //const url = `http://10.130.41.146:5000/api/users/likes/277`;
+  const url = `${apiURL}/users/likes/277`;
 
   // State ---------------------------------------
   const [theStudents, setStudents] = useState([]);

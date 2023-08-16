@@ -1,12 +1,13 @@
 import Action from '../UI/Actions.js';
 import Icon from '../UI/Icons.js';
 import "./FavCard.scss";
+import apiURL from '../../api/API_URL.js';
 
 export default function FavCard({ student, children, index, get }) {
   // initialisation ----------------------------
   const loggedInUser = 277;
   const likeRecord = { LikerID: loggedInUser };
-  const likeEndpoint = `http://softwarehub.uk/unibase/api/likes`;
+  const likeEndpoint = `${apiURL}/likes`;
 
   const postLike = async (url, likeRecord) => {
     // Build request object

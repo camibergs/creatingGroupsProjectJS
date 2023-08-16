@@ -6,10 +6,11 @@ import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 import { useNavigate } from "react-router-dom";
 import "./GroupAssessments.scss";
+import apiURL from "../../api/API_URL.js";
 
 export default function GroupAssessments(props) {
   // Initialisation ------------------------------
-  const url = `http://softwarehub.uk/unibase/api/assessments/leader/820`;
+  const url = `${apiURL}/assessments/leader/820`;
   const navigate = useNavigate();
 
   // State ---------------------------------------

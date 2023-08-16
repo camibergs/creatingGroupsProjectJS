@@ -4,10 +4,11 @@ import { CardContainer } from "../UI/Card.js";
 import CustomBorderCard from "./ColourIndicator.js";
 import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
+import apiURL from "../../api/API_URL.js";
 
 export default function Students(props) {
   const [theStudents, setStudents] = useState(null);
-  const url = "http://softwarehub.uk/unibase/api/users/groups/1";
+  const url = `${apiURL}/users/groups/1`;
 
   const get = async () => {
     const response = await fetch(url);

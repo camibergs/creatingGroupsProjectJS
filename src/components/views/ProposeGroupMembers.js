@@ -5,10 +5,11 @@ import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 import { Draggable, Droppable } from "../UI/DragAndDrop";
 import "./ProposeGroupMembers.scss";
+import apiURL from "../../api/API_URL.js";
 
 function ProposeGroupMembers() {
   // Initialisation ------------------------------
-  const url = `http://softwarehub.uk/unibase/api/users/likes/277`;
+  const url = `${apiURL}/users/likes/277`;
 
   // State ---------------------------------------
   const [students, setStudents] = useState([]);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Action from '../../UI/Actions.js';
 import './AssessmentForm.scss';
 import DatetimePicker from '../../UI/DatetimePicker.js';
+import apiURL from '../../../api/API_URL.js';
 
 const initialAssessment = {
   AssessmentName: '',
@@ -49,11 +50,9 @@ function AssessmentForm({ onCancel, onSuccess }) {
   };
 
   const loggedInLecturer = 820;
-  const apiURL = 'http://softwarehub.uk/unibase/api';
   const postAssessmentEndpoint = `${apiURL}/assessments`;
   const moduleEndpoint = `${apiURL}/modules`;
   const assessmentTypeDescrEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
-
  
   // State ---------------------------------------
   const [assessment, setAssessments] = useState(initialAssessment);
