@@ -1,38 +1,33 @@
-import { useState, useEffect } from "react";
 import View from "../UI/View.js";
 import { CardContainer } from "../UI/Card.js";
 import CustomBorderCard from "./ColourIndicator.js";
 import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
-import apiURL from "../../api/API_URL.js";
+import useLoad from '../../api/useLoad.js';
 
 export default function Students(props) {
-  const [theStudents, setStudents] = useState(null);
-  const url = `${apiURL}/users/groups/1`;
 
-  const get = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    setStudents(data);
-  };
+  // Initialisation ------------------------------
+  const studentGroupEndpoint = `/users/groups/1`;
 
-  useEffect(() => {
-    get();
-  }, []);
+  // State ---------------------------------------
+  const [students, , loadingMessage, ] = useLoad(studentGroupEndpoint);
 
+  // View ----------------------------------------
   return (
     <>
-      {!theStudents ? (
-        <p>Loading records ...</p>
-      ) : theStudents.length === 200 ? (
+      {!students ? (
+        <p>{loadingMessage}</p>
+      ) : students.length === 200 ? (
         <p>No records found.</p>
       ) : (
+
         <View>
           <Header />
           <Navbar /> 
           <h1>Favourites students in your course</h1>
           <CardContainer>
-            {theStudents.map((student) => {
+            {students.map((student) => {
               return (
                 <div class="studentcards">
                   <>
@@ -56,6 +51,7 @@ export default function Students(props) {
             })}
           </CardContainer>
         </View>
+
       )}
     </>
   );

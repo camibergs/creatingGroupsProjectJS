@@ -48,7 +48,9 @@ function ProposeGroupMembers() {
         <h1>Propose group members</h1>
 
         <main className="mylinks">
+        
           <div className="paneFavourites">
+            <h3>Liked coursemates</h3>
             <div className="formEntry"></div>
             <div className="draggableItems">
               <Draggable>
@@ -66,6 +68,7 @@ function ProposeGroupMembers() {
               </Draggable>
             </div>
           </div>
+          
           <div className="paneProposals">
             <h3>Proposed members</h3>
             <Droppable className="droppableRegion" />

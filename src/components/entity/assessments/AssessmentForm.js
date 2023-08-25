@@ -8,9 +8,9 @@ import apiURL from '../../../api/API_URL.js';
 const initialAssessment = {
   AssessmentName: '',
   AssessmentPercentage: '',
-  AssessmentPublishdate: '',
-  AssessmentSubmissiondate: '',
-  AssessmentFeedbackdate: '',
+  AssessmentPublishdate: new Date(),
+  AssessmentSubmissiondate: null,
+  AssessmentFeedbackdate: null,
   AssessmentBriefURL: '',
   AssessmentModuleID: '',
   AssessmentAssessmenttypeID: '',
@@ -25,7 +25,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
     html2js: {
       AssessmentName: (value) => (value === '' ? null : value),
       AssessmentPercentage: (value) => (value === '' ? null : value),
-      AssessmentPublishdate: (value) => (value === '' ? null : value),
+      AssessmentPublishdate: (date) => new Date(date),
       AssessmentSubmissiondate: (value) => (value === '' ? null : value),
       AssessmentFeedbackdate: (value) => (value === '' ? null : value),
       AssessmentBriefURL: (value) => (value === '' ? null : value),
@@ -37,7 +37,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
     js2html: {
       AssessmentName: (value) => (value === '' ? null : value),
       AssessmentPercentage: (value) => (value === '' ? null : value),
-      AssessmentPublishdate: (value) => (value === '' ? null : value),
+      AssessmentPublishdate: (date) => date.toISOString().slice(0,10),
       AssessmentSubmissiondate: (value) => (value === '' ? null : value),
       AssessmentFeedbackdate: (value) => (value === '' ? null : value),
       AssessmentBriefURL: (value) => (value === '' ? null : value),
@@ -119,7 +119,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
           <input
             type="text"
             name="AssessmentName"
-            value={conformance.js2html['AssessmentName'](assessment.AssessmentName || '')}
+            value={conformance.js2html['AssessmentName'](assessment.AssessmentName)}
             onChange={handleChange}
           />
         </label>
@@ -129,7 +129,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
           <input
             type="text"
             name="AssessmentPercentage"
-            value={conformance.js2html['AssessmentPercentage'](assessment.AssessmentPercentage || '')}
+            value={conformance.js2html['AssessmentPercentage'](assessment.AssessmentPercentage)}
             onChange={handleChange}
           />
         </label>

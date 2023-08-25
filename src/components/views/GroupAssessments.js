@@ -56,7 +56,6 @@ export default function GroupAssessments(props) {
             {groupAssessments.map((assessment) => (
             <div className="groupAssessmentslist" key={assessment.AssessmentID}>
               <div className="assessmentDetails">
-                <p>{assessment.AssessmentID}</p>
                 <p>{assessment.AssessmentName}</p>
                </div>
                 <button type="button" onClick={handleButtonClick}>

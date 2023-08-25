@@ -4,7 +4,7 @@ import "./FavCard.scss";
 import apiURL from '../../api/API_URL.js';
 
 export default function FavCard({ student, children, index, get }) {
-  // initialisation ----------------------------
+  // Initialisation ----------------------------
   const loggedInUser = 277;
   const likeRecord = { LikerID: loggedInUser };
   const likeEndpoint = `${apiURL}/likes`;
