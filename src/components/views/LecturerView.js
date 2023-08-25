@@ -6,7 +6,7 @@ import LecturerNavbar from '../../components/layout/LecturerNavbar.js';
 import AssessmentCard from '../entity/assessments/AssessmentCard.js';
 import AssessmentForm from '../entity/assessments/AssessmentForm.js';
 import './LecturerView.scss';
-import apiURL from '../../api/API_URL.js';
+import apiURL from '../api/API_URL.js';
 
 function LecturerView() {
   // Initialisation ------------------------------

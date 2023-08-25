@@ -3,7 +3,7 @@ import { CardContainer } from "../UI/Card.js";
 import CustomBorderCard from "./ColourIndicator.js";
 import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
-import useLoad from '../../api/useLoad.js';
+import useLoad from '../api/useLoad.js';
 
 export default function Students(props) {
 

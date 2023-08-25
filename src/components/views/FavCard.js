@@ -1,7 +1,7 @@
 import Action from '../UI/Actions.js';
 import Icon from '../UI/Icons.js';
 import "./FavCard.scss";
-import apiURL from '../../api/API_URL.js';
+import apiURL from '../api/API_URL.js';
 
 export default function FavCard({ student, children, index, get }) {
   // Initialisation ----------------------------

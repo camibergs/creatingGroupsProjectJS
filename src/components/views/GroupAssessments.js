@@ -6,7 +6,7 @@ import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 import { useNavigate } from "react-router-dom";
 import "./GroupAssessments.scss";
-import apiURL from "../../api/API_URL.js";
+import apiURL from "../api/API_URL.js";
 
 export default function GroupAssessments(props) {
   // Initialisation ------------------------------

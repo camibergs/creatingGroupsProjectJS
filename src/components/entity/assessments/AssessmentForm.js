@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import Action from '../../UI/Actions.js';
 import './AssessmentForm.scss';
 import DatetimePicker from '../../UI/DatetimePicker.js';
-import apiURL from '../../../api/API_URL.js';
+import useLoad from '../../api/useLoad.js';
+import API from "../../api/API.js";
 
 const initialAssessment = {
-  AssessmentName: '',
-  AssessmentPercentage: '',
+  AssessmentName: 'Test new assessment',
+  AssessmentPercentage: '10',
   AssessmentPublishdate: new Date(),
   AssessmentSubmissiondate: null,
   AssessmentFeedbackdate: null,
-  AssessmentBriefURL: '',
+  AssessmentBriefURL: 'https://canvas.kingston.ac.uk/courses/23318/quizzes/39075',
   AssessmentModuleID: '',
   AssessmentAssessmenttypeID: '',
   AssessmentModuleName: '',
@@ -50,16 +51,20 @@ function AssessmentForm({ onCancel, onSuccess }) {
   };
 
   const loggedInLecturer = 820;
-  const postAssessmentEndpoint = `${apiURL}/assessments`;
-  const moduleEndpoint = `${apiURL}/modules`;
-  const assessmentTypeDescrEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
+  const postAssessmentEndpoint = `/assessments`;
+  const moduleEndpoint = `/modules`;
+  const assessmentTypeDescrEndpoint = `/assessments/leader/${loggedInLecturer}`;
  
   // State ---------------------------------------
   const [assessment, setAssessments] = useState(initialAssessment);
-  const [modules, setModules] = useState(null);
-  const [assessmentTypeDescr, setAssessmentTypeDescr] = useState(null);
+  //const [modules, setModules] = useState(null);
+  //const [assessmentTypeDescr, setAssessmentTypeDescr] = useState(null);
 
-  const apiGet = async (endpoint, setState) => {
+  const [modules, setModules, loadingModulesMessage, ] = useLoad(moduleEndpoint);
+  const [assessmentTypeDescr, setAssessmentTypeDescr,loadingAssessMessage, ] = useLoad(assessmentTypeDescrEndpoint);
+
+
+  /* const apiGet = async (endpoint, setState) => {
     const response = await fetch(endpoint);
     const result = await response.json();
     setState(result);
@@ -87,7 +92,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
   useEffect(() => {
     apiGet(assessmentTypeDescrEndpoint, setAssessmentTypeDescr);
-  }, [assessmentTypeDescrEndpoint]);
+  }, [assessmentTypeDescrEndpoint]); */
 
 
 
@@ -99,7 +104,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
   const handleSubmit = async () => {
     console.log(`Assessment=[${JSON.stringify(assessment)}]`);
-    const result = await apiPost(postAssessmentEndpoint, assessment);
+    const result = await API.post(postAssessmentEndpoint, assessment);
     if (result.isSuccess) onSuccess();
     else alert(result.message);
   };
@@ -173,6 +178,9 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
         <label>
           Assessment - Module ID
+          {!modules ? (
+            <p>{loadingModulesMessage}</p>
+          ) : (
           <select
             name="AssessmentModuleID"
             value={conformance.js2html['AssessmentModuleID'](assessment.AssessmentModuleID)}
@@ -185,10 +193,14 @@ function AssessmentForm({ onCancel, onSuccess }) {
               </option>
             ))}
           </select>
+          )}
         </label>
 
         <label>
           Assessment Type ID 
+          {!assessmentTypeDescr ? (
+            <p>{loadingAssessMessage}</p>
+          ) : (
           <select
             name="AssessmentAssessmenttypeID"
             value={conformance.js2html['AssessmentAssessmenttypeID'](assessment.AssessmentAssessmenttypeID)}
@@ -201,6 +213,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
             </option>
           ))}
           </select>
+          )}
         </label>
 
         <Action.Tray>

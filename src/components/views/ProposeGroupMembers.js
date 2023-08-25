@@ -5,7 +5,7 @@ import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 import { Draggable, Droppable } from "../UI/DragAndDrop";
 import "./ProposeGroupMembers.scss";
-import apiURL from "../../api/API_URL.js";
+import apiURL from "../api/API_URL.js";
 
 function ProposeGroupMembers() {
   // Initialisation ------------------------------

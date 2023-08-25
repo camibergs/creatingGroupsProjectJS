@@ -9,7 +9,7 @@ import ColourIndicator from "./ColourIndicator.js";
 import FilterButtons from "./FilterButton.js";
 import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
-import apiURL from "../../api/API_URL.js";
+import apiURL from "../api/API_URL.js";
 
 
 const Students = () => {
