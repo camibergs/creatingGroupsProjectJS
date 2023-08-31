@@ -16,8 +16,7 @@ const initialAssessment = {
   AssessmentModuleID: '',
   AssessmentAssessmenttypeID: '',
   AssessmentModuleName: '',
-  AssessmentAssessmenttypeDescription: '',
-  
+  AssessmentAssessmenttypeDescription: '', 
 };
 
 function AssessmentForm({ onCancel, onSuccess }) {
@@ -46,7 +45,6 @@ function AssessmentForm({ onCancel, onSuccess }) {
       AssessmentAssessmenttypeID: (value) => (value === '' ? null : value),
       AssessmentModuleName: (value) => (value === '' ? null : value),
       AssessmentAssessmenttypeDescription: (value) => (value === '' ? null : value),
-     
     },
   };
 
@@ -60,8 +58,8 @@ function AssessmentForm({ onCancel, onSuccess }) {
   //const [modules, setModules] = useState(null);
   //const [assessmentTypeDescr, setAssessmentTypeDescr] = useState(null);
 
-  const [modules, setModules, loadingModulesMessage, ] = useLoad(moduleEndpoint);
-  const [assessmentTypeDescr, setAssessmentTypeDescr,loadingAssessMessage, ] = useLoad(assessmentTypeDescrEndpoint);
+  const [modules, , loadingModulesMessage, ] = useLoad(moduleEndpoint);
+  const [assessmentTypeDescr, ,loadingAssessMessage, ] = useLoad(assessmentTypeDescrEndpoint);
 
 
   /* const apiGet = async (endpoint, setState) => {

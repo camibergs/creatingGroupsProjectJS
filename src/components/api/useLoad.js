@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import API from "./API.js";
 
 const useLoad = (endpoint) => {

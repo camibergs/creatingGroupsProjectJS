@@ -42,7 +42,6 @@ function LecturerView() {
     <Header />
     <LecturerNavbar />
       <div className='lecturerPage'>
-      <h1>List of assessments:</h1>
 
          <Action.Tray>
             {!showForm && <Action.Add showText buttonText="Add New Assessment" onClick={handleAdd} />}
@@ -56,9 +55,7 @@ function LecturerView() {
           <p>No records found</p>
         ) : (
         <CardContainer>
-          {assessments.map((assessment) => (
-            <AssessmentCard assessment={assessment} key={assessment.AssessmentID} />
-        ))}
+            <AssessmentCard/>
         </CardContainer>
       )}
       </div>

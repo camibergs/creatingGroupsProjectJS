@@ -1,4 +1,6 @@
 export default function StudentCard({ student, children }) {
+  
+  // View ----------------------------------------
   return (
     <>
     <div className="studentCard">

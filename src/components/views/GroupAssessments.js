@@ -6,17 +6,18 @@ import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 import { useNavigate } from "react-router-dom";
 import "./GroupAssessments.scss";
-import apiURL from "../api/API_URL.js";
+import useLoad from '../api/useLoad.js';
 
 export default function GroupAssessments(props) {
   // Initialisation ------------------------------
-  const url = `${apiURL}/assessments/leader/820`;
+  const assessmentsEndpoint = `/assessments/leader/820`;
   const navigate = useNavigate();
 
   // State ---------------------------------------
-  const [groupAssessments, setGroupAssessments] = useState(null);
+  //const [groupAssessments, setGroupAssessments] = useState(null);
+  const [groupAssessments, , loadingAssessMessage, ] = useLoad(assessmentsEndpoint);
   
-  const get = async () => {
+  /* const get = async () => {
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -29,7 +30,7 @@ export default function GroupAssessments(props) {
 
     useEffect(() => {
       get();
-    }, []);
+    }, []); */
 
     console.log("Group Assessments:", groupAssessments);
 
@@ -42,7 +43,7 @@ export default function GroupAssessments(props) {
   return (
     <>
       {!groupAssessments ? (
-        <p>Loading Assessment records ...</p>
+        <p>{loadingAssessMessage}</p>
       ) : groupAssessments.length === 0 ? (
         <p>No Assessment records found 🙂</p>
       ) : (
