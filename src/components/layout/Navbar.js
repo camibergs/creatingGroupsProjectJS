@@ -16,10 +16,6 @@ function Navbar() {
       </div>
 
       <div className="navItem">
-        <NavLink to="/favStudents">Favourites</NavLink>
-      </div>
-
-      <div className="navItem">
         <NavLink to="/groupassessments">Group Assessments</NavLink>
       </div>
 
