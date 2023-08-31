@@ -13,10 +13,6 @@ function LecturerNavbar() {
         <NavLink to="/lecturerview">Assessments</NavLink>
       </div>
 
-      <div className='navItem'>
-        <NavLink to="/lecturerviewproposals">Proposals</NavLink>
-      </div>
-
       <div className='logOut'>
         <NavLink to="/">Log out</NavLink>
       </div>

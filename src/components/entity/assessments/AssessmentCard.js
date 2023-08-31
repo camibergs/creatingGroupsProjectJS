@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Card } from '../../UI/Card.js';
 import apiURL from '../../api/API_URL.js';
+import { useNavigate } from "react-router-dom";
 import './AssessmentCard.scss';
 
 function AssessmentCard({ assessment }) {
   // Initialisation ------------------------------
   const loggedInLecturer = 820;
-  const assessmentsEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
+  //const assessmentsEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
+  const assessmentsEndpoint = `${apiURL}/projects`;
+  const navigate = useNavigate();
 
   // State ---------------------------------------
   const [assessments, setAssessments] = useState(null);
@@ -23,6 +26,9 @@ function AssessmentCard({ assessment }) {
   }, [assessmentsEndpoint]);
 
   // Handlers ------------------------------------
+  const handleButtonClick = () => {
+    navigate("/lecturerviewproposals");
+  };
 
   // View ----------------------------------------
   return (
@@ -33,14 +39,17 @@ function AssessmentCard({ assessment }) {
         <p>No Assessment records found 🙂</p>
       ) : (
           <div className="groupAssessments">
-          <h1>List of Assessments</h1>
+          <h1>List of Group Assessments</h1>
 
           <div className="groupAssessmentsList">
             {assessments.map((assessment) => (
             <div className="groupAssessmentslist" key={assessment.AssessmentID}>
               <div className="assessmentDetails">
-                <p>{assessment.AssessmentName}</p>
+                <p>{assessment.ProjectName}</p>
                </div>
+               <button type="button" onClick={handleButtonClick}>
+                  View groups students
+                </button>
              </div>
              ))}
            </div>

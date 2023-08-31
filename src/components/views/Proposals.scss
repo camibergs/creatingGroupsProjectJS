@@ -1,0 +1,35 @@
+div.proposalPage {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    main.mylinks {
+      padding: 2rem;
+      margin: 10px;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      background: WhiteSmoke;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+  
+      div.paneFavourites {
+        h3 {padding-bottom: 10px;}
+        color: #161616;
+        margin-bottom: 1rem;
+      }
+  
+      div.paneProposals {
+        h3 {padding-bottom: 20px;}
+      }
+
+    }
+
+  
+    @media (min-width: 700px) {
+      main.mylinks { flex-direction: row; gap: 2rem; }
+      div.paneFavourites { flex: 2 }
+      div.paneProposals { flex: 3 }
+    }
+  }
