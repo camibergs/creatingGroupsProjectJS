@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { CardContainer } from "../UI/Card.js";
 import StudentCard from "./StudentCard.js";
 import Header from "../layout/Header.js";
@@ -10,9 +11,11 @@ import apiURL from "../api/API_URL.js";
 function ProposeGroupMembers() {
   // Initialisation ------------------------------
   const url = `${apiURL}/users/likes/277`;
+  const location = useLocation();
 
   // State ---------------------------------------
   const [students, setStudents] = useState([]);
+  const { assessmentID } = location.state || {};
   let [likedStudents, setLikedStudents] = useState([]);
 
   const getStudents = async () => {
@@ -48,7 +51,6 @@ function ProposeGroupMembers() {
         <h1>Propose group members</h1>
 
         <main className="mylinks">
-        
           <div className="paneFavourites">
             <h3>Liked coursemates</h3>
             <div className="formEntry"></div>
@@ -60,6 +62,7 @@ function ProposeGroupMembers() {
                       key={student.UserID}
                       id={student.UserID}
                       className="name fav"
+                      assessmentID={assessmentID}
                     >
                       <StudentCard student={student} />
                     </Draggable>
@@ -68,7 +71,7 @@ function ProposeGroupMembers() {
               </Draggable>
             </div>
           </div>
-          
+
           <div className="paneProposals">
             <h3>Proposed members</h3>
             <Droppable className="droppableRegion" />

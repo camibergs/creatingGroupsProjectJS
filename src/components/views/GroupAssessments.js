@@ -6,7 +6,7 @@ import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 import { useNavigate } from "react-router-dom";
 import "./GroupAssessments.scss";
-import useLoad from '../api/useLoad.js';
+import useLoad from "../api/useLoad.js";
 
 export default function GroupAssessments(props) {
   // Initialisation ------------------------------
@@ -15,8 +15,9 @@ export default function GroupAssessments(props) {
 
   // State ---------------------------------------
   //const [groupAssessments, setGroupAssessments] = useState(null);
-  const [groupAssessments, , loadingAssessMessage, ] = useLoad(assessmentsEndpoint);
-  
+  const [groupAssessments, , loadingAssessMessage] =
+    useLoad(assessmentsEndpoint);
+
   /* const get = async () => {
       try {
         const response = await fetch(url);
@@ -32,11 +33,11 @@ export default function GroupAssessments(props) {
       get();
     }, []); */
 
-    console.log("Group Assessments:", groupAssessments);
+  console.log("Group Assessments:", groupAssessments);
 
   // Handlers ------------------------------------
-  const handleButtonClick = () => {
-    navigate("/propose");
+  const handleButtonClick = (AssessmentID) => {
+    navigate("/propose", { state: { AssessmentID } });
   };
 
   // View ----------------------------------------
@@ -51,20 +52,28 @@ export default function GroupAssessments(props) {
           <Header />
           <Navbar />
           <div className="groupAssessments">
-          <h1>Group Assessments</h1>
+            <h1>Group Assessments</h1>
 
-          <div className="groupAssessmentsList">
-            {groupAssessments.map((assessment) => (
-            <div className="groupAssessmentslist" key={assessment.AssessmentID}>
-              <div className="assessmentDetails">
-                <p>{assessment.AssessmentName}</p>
-               </div>
-                <button type="button" onClick={handleButtonClick}>
-                  Propose group members
-                </button>
-             </div>
-             ))}
-           </div>
+            <div className="groupAssessmentsList">
+              {groupAssessments.map((assessment) => (
+                <div
+                  className="groupAssessmentslist"
+                  key={assessment.AssessmentID}
+                >
+                  <div className="assessmentDetails">
+                    <p>{assessment.AssessmentName}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={(assessment) => {
+                      handleButtonClick(assessment.AssessmentID);
+                    }}
+                  >
+                    Propose group members
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         </View>
       )}
