@@ -5,21 +5,6 @@ export function Draggable(props) {
   const dragRecord = { proposerID: loggedInUser };
   const dragEndpoint = `http://softwarehub.uk/unibase/api/proposals/`;
 
-  const postDroppableObject = async (dragEndpoint, theProposalObject) => {
-    // Build request object
-    const request = {
-      method: "POST",
-      body: JSON.stringify(theProposalObject),
-      headers: { "Content-type": "application/json" },
-    };
-    // Call the fetch
-    const response = await fetch(dragEndpoint, request);
-    const result = await response.json();
-    return response.status >= 200 && response.status < 300
-      ? { isSuccess: true }
-      : { isSuccess: false, message: result.message };
-  };
-
   const deleteLike = async (url) => {
     // Build request object
     const request = {
@@ -73,7 +58,7 @@ export function Draggable(props) {
 
   // Handlers ------------------------------------
   const handleDrag = (event) => {
-    event.dataTransfer.setData("text", event.tarprops.get.id);
+    event.dataTransfer.setData("text", event.target.id);
   };
 
   // View ----------------------------------------
@@ -95,21 +80,41 @@ export function Draggable(props) {
 // THE DROPPABLE REUSABLE COMPONENT //////////////
 export function Droppable(props) {
   // Initialisation ------------------------------
+  const loggedInUser = 277;
+  const dragRecord = { proposerID: loggedInUser };
+  const dragEndpoint = `http://softwarehub.uk/unibase/api/proposals/`;
+
+  const postDroppableObject = async (dragEndpoint, theProposalObject) => {
+    // Build request object
+    const request = {
+      method: "POST",
+      body: JSON.stringify(theProposalObject),
+      headers: { "Content-type": "application/json" },
+    };
+    // Call the fetch
+    const response = await fetch(dragEndpoint, request);
+    const result = await response.json();
+    return response.status >= 200 && response.status < 300
+      ? { isSuccess: true }
+      : { isSuccess: false, message: result.message };
+  };
 
   // State ---------------------------------------
 
   // Handlers ------------------------------------
-  const handleDrop = (event, postDroppableObject, dragEndpoint) => {
+  const handleDrop = (event) => {
     event.preventDefault();
-    var data = event.dataTransfer.props.getData("text");
-    const droppableObject = document.props.getElementById(data);
+    var data = event.dataTransfer.getData("text");
+    const droppableObject = document.getElementById(data);
     const theProposalObject = {
-      ProposerID: droppableObject.proposerID,
+      ProposerID: loggedInUser,
       ProposeeID: droppableObject.id,
-      ProposalAssessmentID: droppableObject.assessmentID,
+      ProposalAssessmentID: props.AssessmentID,
+      ProposalConfirmationID: null,
     };
+    console.log(`handle drop = ${JSON.stringify(theProposalObject)}`);
     postDroppableObject(dragEndpoint, theProposalObject);
-    event.tarprops.get.appendChild(droppableObject);
+    event.target.appendChild(droppableObject);
   };
 
   const allowDrop = (event) => event.preventDefault();

@@ -37,6 +37,7 @@ export default function GroupAssessments(props) {
 
   // Handlers ------------------------------------
   const handleButtonClick = (AssessmentID) => {
+    console.log(`button = ${AssessmentID}`);
     navigate("/propose", { state: { AssessmentID } });
   };
 
@@ -61,11 +62,14 @@ export default function GroupAssessments(props) {
                   key={assessment.AssessmentID}
                 >
                   <div className="assessmentDetails">
-                    <p>{assessment.AssessmentName}</p>
+                    <p>
+                      {[assessment.AssessmentID]}
+                      {assessment.AssessmentName}
+                    </p>
                   </div>
                   <button
                     type="button"
-                    onClick={(assessment) => {
+                    onClick={() => {
                       handleButtonClick(assessment.AssessmentID);
                     }}
                   >

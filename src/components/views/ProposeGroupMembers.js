@@ -15,7 +15,8 @@ function ProposeGroupMembers() {
 
   // State ---------------------------------------
   const [students, setStudents] = useState([]);
-  const { assessmentID } = location.state || {};
+  const { AssessmentID } = location.state || {};
+  console.log(`AssessmentID=[${AssessmentID}]`);
   let [likedStudents, setLikedStudents] = useState([]);
 
   const getStudents = async () => {
@@ -62,7 +63,7 @@ function ProposeGroupMembers() {
                       key={student.UserID}
                       id={student.UserID}
                       className="name fav"
-                      assessmentID={assessmentID}
+                      AssessmentID={AssessmentID}
                     >
                       <StudentCard student={student} />
                     </Draggable>
@@ -74,7 +75,10 @@ function ProposeGroupMembers() {
 
           <div className="paneProposals">
             <h3>Proposed members</h3>
-            <Droppable className="droppableRegion" />
+            <Droppable
+              className="droppableRegion"
+              AssessmentID={AssessmentID}
+            />
           </div>
         </main>
       </div>
