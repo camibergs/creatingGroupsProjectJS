@@ -144,6 +144,27 @@ export function Droppable(props) {
 
   console.log("Propose Saved:", proposeSaved);
 
+  const handleDelete = async (proposalID) => {
+    try {
+      // Build DELETE request to the dropEndpoint with the proposalID
+      const deleteEndpoint = `${dropEndpoint}/${proposalID}`;
+      const response = await fetch(deleteEndpoint, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete proposee.");
+      }
+
+      // Update the state to remove the deleted proposal
+      setProposeSaved((prevProposeSaved) =>
+        prevProposeSaved.filter((proposal) => proposal.ProposalID !== proposalID)
+      );
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   // View ----------------------------------------
   return (
     <>
@@ -158,16 +179,12 @@ export function Droppable(props) {
         
       <div>
         {proposeSaved.map((proposee) => (
-        <div
-          className="groupAssessmentslist"
-          key={proposee.proposeeID}
-          
-        >
+        <div className="groupAssessmentslist" key={proposee.proposeeID} >
           <CardContainer>
-          <p>Proposee ID: {proposee.ProposeeID}</p>
-          <button>
-            Delete
-          </button>
+           <p>Proposee ID: {proposee.ProposeeID}</p>
+           <button onClick={() => handleDelete(proposee.ProposeeID)}>
+             Delete
+           </button>
           </CardContainer>
         </div> 
       ))}
