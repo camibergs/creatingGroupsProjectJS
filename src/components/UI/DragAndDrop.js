@@ -165,6 +165,9 @@ export function Droppable(props) {
         >
           <CardContainer>
           <p>Proposee ID: {proposee.ProposeeID}</p>
+          <button>
+            Delete
+          </button>
           </CardContainer>
         </div> 
       ))}
