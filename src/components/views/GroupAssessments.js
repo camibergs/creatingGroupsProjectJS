@@ -64,6 +64,7 @@ export default function GroupAssessments(props) {
                   <div className="assessmentDetails">
                     <p>
                       {[assessment.AssessmentID]}
+                      <p> </p>
                       {assessment.AssessmentName}
                     </p>
                   </div>

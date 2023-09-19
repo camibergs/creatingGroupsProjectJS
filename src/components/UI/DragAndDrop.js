@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { CardContainer } from "./Card.js";
+
 // THE DRAGGABLE REUSABLE COMPONENT //////////////
 export function Draggable(props) {
   // Initialisation ------------------------------
@@ -83,6 +86,7 @@ export function Droppable(props) {
   const loggedInUser = 277;
   const dragRecord = { proposerID: loggedInUser };
   const dragEndpoint = `http://softwarehub.uk/unibase/api/proposals/`;
+  const dropEndpoint = `http://softwarehub.uk/unibase/api/proposals/assessments/${props.AssessmentID}/proposedby/${loggedInUser}`;
 
   const postDroppableObject = async (dragEndpoint, theProposalObject) => {
     // Build request object
@@ -100,6 +104,25 @@ export function Droppable(props) {
   };
 
   // State ---------------------------------------
+  const [proposeSaved, setProposeSaved] = useState([]);
+
+  const getProposeSaved = async () => {
+    try {
+      const response = await fetch(dropEndpoint);
+      if (!response.ok) {
+        throw new Error("Failed to fetch proposeSaved data.");
+      }
+      const data = await response.json();
+      setProposeSaved(data); // Update proposeSaved with the fetched data
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getProposeSaved();
+  }, [dropEndpoint]);
+
 
   // Handlers ------------------------------------
   const handleDrop = (event) => {
@@ -119,15 +142,33 @@ export function Droppable(props) {
 
   const allowDrop = (event) => event.preventDefault();
 
+  console.log("Propose Saved:", proposeSaved);
+
   // View ----------------------------------------
   return (
-    <div
-      id={props.id}
-      onDrop={handleDrop}
-      onDragOver={allowDrop}
-      className={"className" in props && props.className}
-    >
-      {props.children}
-    </div>
+    <>
+      <div
+        id={props.id}
+        onDrop={handleDrop}
+        onDragOver={allowDrop}
+        className={"className" in props && props.className}
+      >
+        {props.children}
+      </div>
+        
+      <div>
+        {proposeSaved.map((proposee) => (
+        <div
+          className="groupAssessmentslist"
+          key={proposee.proposeeID}
+          
+        >
+          <CardContainer>
+          <p>Proposee ID: {proposee.ProposeeID}</p>
+          </CardContainer>
+        </div> 
+      ))}
+      </div>
+    </>
   );
 }
