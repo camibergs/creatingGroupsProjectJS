@@ -1,0 +1,25 @@
+div.savedProposals {
+
+  .leftContent {
+      flex: 1; /* Take up the available space on the left */
+      margin: 8px;
+    }
+  
+  .rightContent {
+    display: flex;
+    align-items: flex-end; /* Align the "Delete" button to the bottom */
+    justify-content: flex-end; /* Align the "Delete" button to the right */
+    
+    margin: 8px;
+    border-radius: 5px;
+
+      .deleteButton {
+        background-color: rgb(209, 80, 80);
+      }
+    
+  }
+
+}
+
+
+

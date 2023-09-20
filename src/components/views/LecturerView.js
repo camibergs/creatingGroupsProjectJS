@@ -12,6 +12,7 @@ function LecturerView() {
   // Initialisation ------------------------------
   const loggedInLecturer = 820;
   const myModulesEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
+  //const myModulesEndpoint = `${apiURL}/assessments/`;
 
   // State ---------------------------------------
   const [assessments, setAssessments] = useState(null);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CardContainer } from "./Card.js";
+import "./DragAndDrop.scss";
 
 // THE DRAGGABLE REUSABLE COMPONENT //////////////
 export function Draggable(props) {
@@ -114,6 +115,8 @@ export function Droppable(props) {
       }
       const data = await response.json();
       setProposeSaved(data); // Update proposeSaved with the fetched data
+      getProposeSaved();
+
     } catch (error) {
       console.error(error.message);
     }
@@ -160,10 +163,13 @@ export function Droppable(props) {
       setProposeSaved((prevProposeSaved) =>
         prevProposeSaved.filter((proposal) => proposal.ProposalID !== proposalID)
       );
+      getProposeSaved();
     } catch (error) {
       console.error(error.message);
     }
   };
+
+
 
   // View ----------------------------------------
   return (
@@ -178,13 +184,18 @@ export function Droppable(props) {
       </div>
         
       <div>
-        {proposeSaved.map((proposee) => (
-        <div className="groupAssessmentslist" key={proposee.proposeeID} >
+        {proposeSaved.map((proposal) => (
+        <div className="savedProposals" key={proposal.ProposalID} >
           <CardContainer>
-           <p>Proposee ID: {proposee.ProposeeID}</p>
-           <button onClick={() => handleDelete(proposee.ProposeeID)}>
+          <div className="leftContent">
+           <p>Proposal ID: {proposal.ProposalID}</p>
+           <p>Proposee ID: {proposal.ProposeeID}</p>
+          </div>
+          <div className="rightContent">
+           <button onClick={() => handleDelete(proposal.ProposalID)} className="deleteButton">
              Delete
            </button>
+           </div>
           </CardContainer>
         </div> 
       ))}

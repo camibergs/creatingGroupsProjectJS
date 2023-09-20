@@ -8,8 +8,8 @@ import './AssessmentCard.scss';
 function AssessmentCard({ assessment }) {
   // Initialisation ------------------------------
   const loggedInLecturer = 820;
-  //const assessmentsEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
-  const assessmentsEndpoint = `${apiURL}/projects`;
+  const assessmentsEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
+  //const assessmentsEndpoint = `${apiURL}/projects`;
   const navigate = useNavigate();
 
   // State ---------------------------------------
@@ -45,7 +45,7 @@ function AssessmentCard({ assessment }) {
             {assessments.map((assessment) => (
             <div className="groupAssessmentslist" key={assessment.AssessmentID}>
               <div className="assessmentDetails">
-                <p>{assessment.ProjectName}</p>
+                <p>{assessment.AssessmentName}</p>
                </div>
                <button type="button" onClick={handleButtonClick}>
                   View groups students

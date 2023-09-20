@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CardContainer } from "../UI/Card.js";
-import StudentCard from "./StudentCard.js";
 import Header from "../layout/Header.js";
 import Navbar from "../layout/Navbar.js";
 import { Draggable, Droppable } from "../UI/DragAndDrop";
 import "./ProposeGroupMembers.scss";
 import apiURL from "../api/API_URL.js";
 
-function ProposeGroupMembers() {
+function ProposeGroupMembers({ children }) {
   // Initialisation ------------------------------
   const url = `${apiURL}/users/likes/277`;
   const location = useLocation();
+  const navigate = useNavigate();
 
   // State ---------------------------------------
   const [students, setStudents] = useState([]);
@@ -42,6 +42,10 @@ function ProposeGroupMembers() {
     (student) => student.UserLikeAffinityID === 1
   );
 
+  const goBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
+
   // View ----------------------------------------
   return (
     <>
@@ -49,7 +53,13 @@ function ProposeGroupMembers() {
       <Navbar />
 
       <div className="proposePage">
+        {/* Add a Back button */}
+        <button onClick={goBack} className="backButton">
+          &laquo;Back
+        </button>
+
         <h1>Propose group members</h1>
+        <h3>Assessment ID: {AssessmentID}</h3>
 
         <main className="mylinks">
           <div className="paneFavourites">
@@ -65,7 +75,17 @@ function ProposeGroupMembers() {
                       className="name fav"
                       AssessmentID={AssessmentID}
                     >
-                      <StudentCard student={student} />
+                      <div className="studentCard">
+                      <p>{student.UserEmail.substring(0, 8)}</p>
+                      <p>{`${student.UserFirstname} ${student.UserLastname}`}</p>
+                      <img
+                        draggable="false"
+                        className="img"
+                        src={student.UserImageURL}
+                        alt={student.UserEmail.substring(0, 8)}
+                      />
+                      {children}
+                      </div>
                     </Draggable>
                   ))}
                 </CardContainer>

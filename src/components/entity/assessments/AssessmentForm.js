@@ -50,6 +50,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
   const loggedInLecturer = 820;
   const postAssessmentEndpoint = `/assessments`;
+  //const postAssessmentEndpoint = `/projects`
   const moduleEndpoint = `/modules`;
   const assessmentTypeDescrEndpoint = `/assessments/leader/${loggedInLecturer}`;
  
