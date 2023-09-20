@@ -147,7 +147,7 @@ export function Droppable(props) {
   const handleDelete = async (proposalID) => {
     try {
       // Build DELETE request to the dropEndpoint with the proposalID
-      const deleteEndpoint = `${dropEndpoint}/${proposalID}`;
+      const deleteEndpoint = `${dragEndpoint}${proposalID}`;
       const response = await fetch(deleteEndpoint, {
         method: "DELETE",
       });
