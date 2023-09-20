@@ -1,3 +1,25 @@
+button.backButton {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  background-color: white; /* Button background color */
+  color: black; /* Button text color */
+  font-size: 16px;
+  text-decoration: underline;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #9fbfe2; /* Hovered state background color */
+  }
+
+}
+
+
+
+
 div.proposalPage {
     padding: 20px;
     display: flex;
@@ -9,7 +31,7 @@ div.proposalPage {
       margin: 10px;
       border: 1px solid lightgrey;
       border-radius: 5px;
-      background: WhiteSmoke;
+      background: white;
       display: flex;
       flex-direction: column;
       width: 90%;
@@ -32,4 +54,5 @@ div.proposalPage {
       div.paneFavourites { flex: 2 }
       div.paneProposals { flex: 3 }
     }
+  
   }

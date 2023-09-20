@@ -26,8 +26,9 @@ function AssessmentCard({ assessment }) {
   }, [assessmentsEndpoint]);
 
   // Handlers ------------------------------------
-  const handleButtonClick = () => {
-    navigate("/lecturerviewproposals");
+  const handleButtonClick = (assessment) => {
+    console.log(`button = ${assessment.AssessmentID}`);
+    navigate("/lecturerviewproposals", { state: { AssessmentID: assessment.AssessmentID, ProposalAssessmentID: assessment.ProposalAssessmentID } });
   };
 
   // View ----------------------------------------
@@ -41,18 +42,20 @@ function AssessmentCard({ assessment }) {
           <div className="groupAssessments">
           <h1>List of Group Assessments</h1>
 
-          <div className="groupAssessmentsList">
-            {assessments.map((assessment) => (
-            <div className="groupAssessmentslist" key={assessment.AssessmentID}>
-              <div className="assessmentDetails">
-                <p>{assessment.AssessmentName}</p>
-               </div>
-               <button type="button" onClick={handleButtonClick}>
-                  View groups students
-                </button>
-             </div>
-             ))}
-           </div>
+            <div className="groupAssessmentsList">
+              {assessments.map((assessment) => (
+              <div className="groupAssessmentslist" key={assessment.AssessmentID}>
+                <div className="assessmentDetails">
+                  <p>{assessment.AssessmentID}</p>
+                  <p>{assessment.AssessmentName}</p>
+                </div>
+
+                <button type="button" onClick={() => handleButtonClick(assessment)}>
+                    View groups students
+                  </button>
+              </div>
+              ))}
+            </div>
           </div>
       )}
     </>

@@ -52,12 +52,11 @@ function ProposeGroupMembers({ children }) {
       <Header />
       <Navbar />
 
-      <div className="proposePage">
-        {/* Add a Back button */}
         <button onClick={goBack} className="backButton">
           &laquo;Back
         </button>
 
+        <div className="proposePage">
         <h1>Propose group members</h1>
         <h3>Assessment ID: {AssessmentID}</h3>
 
