@@ -21,12 +21,9 @@ div.proposePage {
   padding: 20px;
   display: flex;
   flex-direction: column;
-
-
   justify-content: flex-start;
 
   
-
   main.mylinks {
     padding: 2rem;
     margin: 10px;
@@ -107,18 +104,21 @@ div.proposePage {
   }
 
   div.studentCard {
-    width: 120px;
-    height: 160px;
+    width: 140px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center; /* Center-align text */
+    text-align: center; 
+    background-color: #fff; 
   }
  
   .studentCard img {
-    max-width: 100px; /* Adjust the maximum image width */
-    max-height: 100px; /* Adjust the maximum image height */
+    max-width: 100%; 
+    max-height: 100%; 
+    margin-bottom:10px;
+    border-radius: 2px;
   }
   
 }
