@@ -104,8 +104,13 @@ function AssessmentForm({ onCancel, onSuccess }) {
   const handleSubmit = async () => {
     console.log(`Assessment=[${JSON.stringify(assessment)}]`);
     const result = await API.post(postAssessmentEndpoint, assessment);
-    if (result.isSuccess) onSuccess();
-    else alert(result.message);
+    if (result.isSuccess) {
+      onSuccess();
+      // Reload the page
+    window.location.reload();
+    } else {
+      alert(result.message);
+    }
   };
 
   const handleCancel = () => {

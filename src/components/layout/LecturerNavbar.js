@@ -4,7 +4,7 @@ import "./LecturerNavbar.scss";
 function LecturerNavbar() {
   // Initialisation ------------------------------
   const location = useLocation();
-  const loggedInUser = location.state?.loggedInUser ?? `unknown`;
+  const loggedInUser = location.state?.loggedInUser ?? ``;
 
   // Trim down the email to remove the domain
   const trimmedUser = loggedInUser?.split("@")[0];

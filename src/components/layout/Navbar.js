@@ -20,7 +20,7 @@ function Navbar() {
       </div>
 
       <div className="navItemWelcome">
-        <p className="welcome">Welcome {trimmedUser}</p>
+        {/* <p className="welcome">Welcome {trimmedUser}</p> */}
       </div>
 
       <div className="logOut">
